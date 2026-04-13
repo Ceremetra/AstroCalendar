@@ -271,7 +271,7 @@
     }
 
     var svg = '';
-    svg += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + SIZE + ' ' + SIZE + '" class="wandering-astro-chart-svg">';
+    svg += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + SIZE + ' ' + SIZE + '" class="astral-posts-chart-svg">';
 
     // -- Zodiac sign ring (12 colored segments) --
     for (var si = 0; si < 12; si++) {
@@ -493,56 +493,56 @@
 
       // Build HTML
       var html = '';
-      html += '<h3 class="wandering-astro-title">Celestial Transits</h3>';
+      html += '<h3 class="astral-posts-title">Celestial Transits</h3>';
       var subtitle = 'Positions for ' + date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
       if (locationName) {
         subtitle += ' \u2014 ' + locationName;
       }
-      html += '<p class="wandering-astro-date">' + subtitle + '</p>';
+      html += '<p class="astral-posts-date">' + subtitle + '</p>';
 
       // Transit chart wheel
-      html += '<div class="wandering-astro-card wandering-astro-chart-card">';
-      html += '<div class="wandering-astro-card-header">Transit Chart</div>';
-      html += '<div class="wandering-astro-chart-wrap">';
+      html += '<div class="astral-posts-card astral-posts-chart-card">';
+      html += '<div class="astral-posts-card-header">Transit Chart</div>';
+      html += '<div class="astral-posts-chart-wrap">';
       html += renderChartSVG(longitudes, cusps, aspects, hasLocation ? ascLon : 0);
       html += '</div></div>';
 
       // Moon phase card
-      html += '<div class="wandering-astro-card wandering-astro-moon">';
-      html += '<div class="wandering-astro-card-header">Moon Phase</div>';
-      html += '<div class="wandering-astro-moon-display">';
-      html += '<span class="wandering-astro-moon-emoji">' + moon.emoji + '</span>';
-      html += '<div class="wandering-astro-moon-info">';
+      html += '<div class="astral-posts-card astral-posts-moon">';
+      html += '<div class="astral-posts-card-header">Moon Phase</div>';
+      html += '<div class="astral-posts-moon-display">';
+      html += '<span class="astral-posts-moon-emoji">' + moon.emoji + '</span>';
+      html += '<div class="astral-posts-moon-info">';
       html += '<strong>' + moon.name + '</strong><br>';
       html += moon.illumination + '% illuminated<br>';
       html += 'Moon in ' + moonSign.symbol + ' ' + moonSign.sign + ' ' + formatDegree(moonSign.degree);
       if (hasLocation) {
-        html += ' <span class="wandering-astro-house-badge">House ' + moonHouse + '</span>';
+        html += ' <span class="astral-posts-house-badge">House ' + moonHouse + '</span>';
       }
       html += '</div></div></div>';
 
       // Sun sign card
-      html += '<div class="wandering-astro-card wandering-astro-sun">';
-      html += '<div class="wandering-astro-card-header">Sun Sign</div>';
-      html += '<div class="wandering-astro-body-row">';
-      html += '<span class="wandering-astro-body-symbol">\u2609</span>';
+      html += '<div class="astral-posts-card astral-posts-sun">';
+      html += '<div class="astral-posts-card-header">Sun Sign</div>';
+      html += '<div class="astral-posts-body-row">';
+      html += '<span class="astral-posts-body-symbol">\u2609</span>';
       html += '<span>Sun in ' + sunSign.symbol + ' ' + sunSign.sign + ' ' + formatDegree(sunSign.degree);
       if (hasLocation) {
-        html += ' <span class="wandering-astro-house-badge">House ' + sunHouse + '</span>';
+        html += ' <span class="astral-posts-house-badge">House ' + sunHouse + '</span>';
       }
       html += '</span></div></div>';
 
       // Planets card
-      html += '<div class="wandering-astro-card wandering-astro-planets">';
-      html += '<div class="wandering-astro-card-header">Planetary Positions</div>';
+      html += '<div class="astral-posts-card astral-posts-planets">';
+      html += '<div class="astral-posts-card-header">Planetary Positions</div>';
       for (var j = 0; j < planetData.length; j++) {
         var pd = planetData[j];
-        html += '<div class="wandering-astro-body-row">';
-        html += '<span class="wandering-astro-body-symbol">' + pd.symbol + '</span>';
-        html += '<span class="wandering-astro-body-name">' + pd.name + '</span>';
-        html += '<span class="wandering-astro-body-pos">' + pd.signSymbol + ' ' + pd.sign + ' ' + formatDegree(pd.degree);
+        html += '<div class="astral-posts-body-row">';
+        html += '<span class="astral-posts-body-symbol">' + pd.symbol + '</span>';
+        html += '<span class="astral-posts-body-name">' + pd.name + '</span>';
+        html += '<span class="astral-posts-body-pos">' + pd.signSymbol + ' ' + pd.sign + ' ' + formatDegree(pd.degree);
         if (hasLocation && pd.house) {
-          html += ' <span class="wandering-astro-house-badge">H' + pd.house + '</span>';
+          html += ' <span class="astral-posts-house-badge">H' + pd.house + '</span>';
         }
         html += '</span></div>';
       }
@@ -550,13 +550,13 @@
 
       // House cusps card
       if (hasLocation && cusps) {
-        html += '<div class="wandering-astro-card wandering-astro-houses">';
-        html += '<div class="wandering-astro-card-header">Placidus Houses</div>';
+        html += '<div class="astral-posts-card astral-posts-houses">';
+        html += '<div class="astral-posts-card-header">Placidus Houses</div>';
         for (var h = 0; h < 12; h++) {
           var cuspSign = getZodiacSign(cusps[h]);
-          html += '<div class="wandering-astro-house-row">';
-          html += '<span class="wandering-astro-house-num">House ' + (h + 1) + '</span>';
-          html += '<span class="wandering-astro-house-cusp">' + cuspSign.symbol + ' ' + cuspSign.sign + ' ' + formatDegree(cuspSign.degree) + '</span>';
+          html += '<div class="astral-posts-house-row">';
+          html += '<span class="astral-posts-house-num">House ' + (h + 1) + '</span>';
+          html += '<span class="astral-posts-house-cusp">' + cuspSign.symbol + ' ' + cuspSign.sign + ' ' + formatDegree(cuspSign.degree) + '</span>';
           html += '</div>';
         }
         html += '</div>';
@@ -564,34 +564,34 @@
 
       // Aspects card
       if (aspects.length > 0) {
-        html += '<div class="wandering-astro-card wandering-astro-aspects">';
-        html += '<div class="wandering-astro-card-header">Key Aspects</div>';
+        html += '<div class="astral-posts-card astral-posts-aspects">';
+        html += '<div class="astral-posts-card-header">Key Aspects</div>';
         var shown = Math.min(aspects.length, 12);
         for (var a = 0; a < shown; a++) {
           var asp = aspects[a];
-          html += '<div class="wandering-astro-aspect-row">';
-          html += '<span class="wandering-astro-aspect-dot" style="background:' + asp.color + '"></span>';
-          html += '<span class="wandering-astro-aspect-bodies">' + asp.body1 + ' ' + asp.symbol + ' ' + asp.body2 + '</span>';
-          html += '<span class="wandering-astro-aspect-name">' + asp.aspect + '</span>';
-          html += '<span class="wandering-astro-aspect-orb">(orb ' + asp.orb + '\u00B0)</span>';
+          html += '<div class="astral-posts-aspect-row">';
+          html += '<span class="astral-posts-aspect-dot" style="background:' + asp.color + '"></span>';
+          html += '<span class="astral-posts-aspect-bodies">' + asp.body1 + ' ' + asp.symbol + ' ' + asp.body2 + '</span>';
+          html += '<span class="astral-posts-aspect-name">' + asp.aspect + '</span>';
+          html += '<span class="astral-posts-aspect-orb">(orb ' + asp.orb + '\u00B0)</span>';
           html += '</div>';
         }
         html += '</div>';
       }
 
       container.innerHTML = html;
-      container.classList.add('wandering-astro-loaded');
+      container.classList.add('astral-posts-loaded');
 
     } catch (err) {
-      container.innerHTML = '<p class="wandering-astro-error">Unable to calculate astronomical data.</p>';
+      container.innerHTML = '<p class="astral-posts-error">Unable to calculate astronomical data.</p>';
       if (typeof console !== 'undefined') {
-        console.error('Wandering Astro error:', err);
+        console.error('Astral Posts error:', err);
       }
     }
   }
 
   function init() {
-    var containers = document.querySelectorAll('.wandering-astro-data');
+    var containers = document.querySelectorAll('.astral-posts-data');
     for (var i = 0; i < containers.length; i++) {
       renderAstroData(containers[i]);
     }
